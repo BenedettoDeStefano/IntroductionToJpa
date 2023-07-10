@@ -1,0 +1,40 @@
+Eserczio 1:
+
+SELECT nome, cognome
+FROM clienti
+WHERE clienti.data_nascita=1982;
+**************************************************************************
+SELECT COUNT(*) AS numero_fatture
+FROM fatture
+WHERE iva = 20
+**************************************************************************
+SELECT data_fattura, COUNT(*), SUM(importo)
+FROM fatture
+GROUP BY (data_fattura)
+**************************************************************************
+SELECT *
+FROM prodotti
+WHERE data_attivazione=2017 AND in_produzione = true OR in_commercio = true
+**************************************************************************
+SELECT (data_fattura), COUNT(*)
+FROM Fatture
+WHERE Iva = 20
+GROUP BY (data_fattura);
+**************************************************************************
+SELECT numero_fattura, importo, iva, data_fattura
+FROM fatture
+JOIN fornitori ON fornitori.numero_fornitore = fornitori.numero_fornitore
+**************************************************************************
+SELECT regione_residenza, SUM(importo)
+FROM fatture
+JOIN clienti ON fatture.id_cliente = clienti.numero_cliente
+GROUP BY regione_residenza
+**************************************************************************
+SELECT *
+FROM clienti
+JOIN fatture ON clienti.numero_cliente = fatture.id_cliente
+WHERE clienti.data_nascita = 1980 AND fatture.importo > 50;
+**************************************************************************
+SELECT CONCAT(nome, '-', cognome) AS Denominazione
+FROM Clienti
+WHERE regione_residenza = 'Lombardia';
